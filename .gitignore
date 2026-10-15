@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+*.log
+.data/
+.vercel/
+# Never commit OAuth material. Mailroom keeps it in ~/.config/mailroom, but just in case:
+tokens*.json
+credentials*.json
+client_secret*.json
+config.json
+.env*
+raycast-extension/dist/

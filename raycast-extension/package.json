@@ -1,0 +1,74 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "mailroom",
+  "title": "Mailroom",
+  "description": "Read and triage your Mailroom mail (Now, Later, Noise, Inbox) without leaving Raycast.",
+  "icon": "icon.png",
+  "author": "joconnell04",
+  "categories": ["Productivity", "Communication"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "inbox",
+      "title": "Mailroom Inbox",
+      "subtitle": "Mailroom",
+      "description": "Browse Now, Later, Noise and Inbox across your accounts and read mail in Raycast.",
+      "mode": "view"
+    },
+    {
+      "name": "open",
+      "title": "Open Mailroom",
+      "subtitle": "Mailroom",
+      "description": "Start the Mailroom server if needed and open the full app window.",
+      "mode": "no-view"
+    },
+    {
+      "name": "update",
+      "title": "Update Mailroom",
+      "subtitle": "Mailroom",
+      "description": "Install the newest mailroom*.zip from Downloads. Logins are kept.",
+      "mode": "no-view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "mailroomDir",
+      "title": "Mailroom Folder",
+      "description": "The folder that contains server.js.",
+      "type": "textfield",
+      "required": false,
+      "default": "~/mailroom",
+      "placeholder": "~/mailroom"
+    },
+    {
+      "name": "port",
+      "title": "Port",
+      "description": "Port the Mailroom server listens on.",
+      "type": "textfield",
+      "required": false,
+      "default": "4747"
+    },
+    {
+      "name": "markReadOnOpen",
+      "label": "Mark as read when opened",
+      "title": "Reading",
+      "description": "Mark a conversation read when you open it in Raycast.",
+      "type": "checkbox",
+      "required": false,
+      "default": true
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^2.4.1",
+    "@raycast/utils": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop"
+  }
+}

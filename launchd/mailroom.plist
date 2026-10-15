@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.mailroom</string>
+  <!-- Watchdog: starts the Mailroom server at login and restarts it within 10s if it stops.
+       Skips starting when something already answers /health, so the Raycast Open script's
+       restart-after-update keeps working without a port fight.
+       Change DIR below if needed: it must be the folder that holds server.js. launchd can't read
+       ~/Downloads, ~/Desktop or ~/Documents, so keep the folder somewhere else. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-c</string>
+    <string>DIR="$HOME/mailroom"; LOG="$HOME/.config/mailroom/server.log"
+mkdir -p "$HOME/.config/mailroom"
+while true; do
+  if ! curl -fsS --max-time 2 http://127.0.0.1:4747/health >/dev/null 2>&amp;1; then
+    node "$DIR/server.js" >>"$LOG" 2>&amp;1
+  fi
+  sleep 10
+done</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/local.mailroom.err</string>
+</dict>
+</plist>

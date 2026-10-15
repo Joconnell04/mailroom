@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>Mailroom</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/app.css">
+<script src="/theme.js"></script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <a class="brand" href="#/inbox" aria-label="Mailroom inbox">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <span>Mailroom</span>
+  </a>
+  <form class="search" id="searchForm" role="search">
+    <button type="submit" class="icon-btn" aria-label="Search" id="searchBtn"></button>
+    <input id="q" type="search" placeholder="Search all mail" autocomplete="off" spellcheck="false" aria-label="Search mail">
+    <button type="button" class="icon-btn" id="clearSearch" aria-label="Clear search" hidden></button>
+  </form>
+  <div class="top-actions">
+    <span class="demo-chip" id="demoChip" hidden>Demo data</span>
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode"></button>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings"></button>
+  </div>
+</header>
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="Mailboxes"></nav>
+  <main class="main"><section class="panel" id="panel"></section></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="menu" id="menu" role="menu" hidden></div>
+<div id="modal"></div>
+<script src="/app.js"></script>
+</body>
+</html>
